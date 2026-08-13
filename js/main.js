@@ -23,11 +23,18 @@ fetch("data/links.json")
   })
   .catch(err => console.error("Links load error ❌", err));
 //load Textbooks
-  fetch("data/textbooks.json")
-  .then(res => res.json())
-  .then(data => textbooksData = data);
+  let linkData = {};
 
+fetch("data/links.json")
+.then(res => res.json())
+.then(data => {
 
+    linkData = data;
+
+    console.log("Links Loaded");
+
+    loadTextbooks();   // Load first page only once
+});
 
 function checkDataLoaded() {
   if (subjectsData && Object.keys(subjectsData).length > 0 && 
@@ -762,26 +769,82 @@ window.onload = function () {
   showSection("home", homeBtn);
 };
 // ================= show TEXTBOOKS =================
-async function loadTextbooks() {
 
-    const data = await fetch("data/links.json").then(r => r.json());
 
-    const books = data.TEXTBOOKS || [];
+const booksPerPage = 5;
+let currentBookPage = 1;
+
+function loadTextbooks(page = 1) {
+
+    currentBookPage = page;
 
     const table = document.getElementById("textbookTable");
-    table.innerHTML = "";
+    const pagination = document.getElementById("textbookPagination");
 
-    books.forEach(book => {
+    table.innerHTML = "";
+    pagination.innerHTML = "";
+
+    const books = linkData.TEXTBOOKS;
+
+    if (!books) return;
+
+    const start = (page - 1) * booksPerPage;
+    const end = start + booksPerPage;
+
+    const currentBooks = books.slice(start, end);
+
+    currentBooks.forEach(book => {
 
         table.innerHTML += `
-        <tr>
-            <td class="border p-2 text-center">${book.name}</td>
-            <td class="border p-2 text-center">
-                <a href="${book.link}" target="_blank" class=" text-blue-600 underline px-3 py-1 rounded ">View</a>
-            </td>
-        </tr>
+            <tr>
+                <td class="border p-3">
+                    ${book.name}
+                </td>
+
+                <td class="border p-3 text-center">
+                    <a href="${book.link}"
+                       target="_blank"
+                       class="text-blue-600 underline">
+                       View
+                    </a>
+                </td>
+            </tr>
         `;
+
     });
+
+    const totalPages = Math.ceil(books.length / booksPerPage);
+
+    // Page buttons
+    for(let i=1;i<=totalPages;i++){
+
+        pagination.innerHTML += `
+        <button
+            onclick="loadTextbooks(${i})"
+            class="mx-1 px-3 py-2 rounded ${
+                page===i
+                ? 'bg-red-600 text-white'
+                : 'bg-gray-200'
+            }">
+
+            ${i}
+
+        </button>`;
+    }
+
+    // Next button
+    if(page<totalPages){
+
+        pagination.innerHTML += `
+        <button
+            onclick="loadTextbooks(${page+1})"
+            class="mx-1 px-3 py-2 bg-blue-500 text-white rounded">
+
+            Next
+
+        </button>`;
+    }
+
 }
 // ====================== INITIAL TEXTBOOKS LOAD =================
 loadTextbooks();
@@ -1004,3 +1067,215 @@ if (!count) {
 localStorage.setItem("visits", count);
 
 document.getElementById("visitorCount").innerText = count;
+
+// ================= GALLERY SLIDER =================
+const carousel = document.getElementById("carousel");
+const cards = document.querySelectorAll(".card");
+const dotsContainer = document.getElementById("dots");
+
+let index = 1; // start center
+let total = cards.length;
+
+/* Create dots */
+cards.forEach((_, i) => {
+  const dot = document.createElement("div");
+  dot.addEventListener("click", () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll("#dots div");
+
+/* Update UI */
+function updateCarousel() {
+  carousel.style.transform = `translateX(-${index * (100 / 3)}%)`;
+
+  cards.forEach(c => c.classList.remove("active"));
+  dots.forEach(d => d.classList.remove("active-dot"));
+
+  if (cards[index]) cards[index].classList.add("active");
+  if (dots[index]) dots[index].classList.add("active-dot");
+}
+
+/* Next */
+function nextSlide() {
+  index++;
+  if (index >= total) index = 0;
+  updateCarousel();
+}
+
+/* Prev */
+function prevSlide() {
+  index--;
+  if (index < 0) index = total - 1;
+  updateCarousel();
+}
+
+/* Go to specific */
+function goToSlide(i) {
+  index = i;
+  updateCarousel();
+}
+
+/* Auto Slide */
+setInterval(nextSlide, 3000);
+
+/* Swipe Support (Mobile) */
+let startX = 0;
+
+carousel.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+carousel.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) nextSlide();
+  if (endX - startX > 50) prevSlide();
+});
+
+/* Init */
+updateCarousel();
+
+function toggleSyllabus() {
+
+    const box = document.getElementById("syllabusDepartments");
+
+    box.classList.toggle("hidden");
+
+    if (!box.classList.contains("hidden")) {
+
+        box.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+}
+
+function loadHomeVideos(){
+
+fetch("data/links.json")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+const container=document.getElementById("homeVideos");
+
+container.innerHTML="";
+
+data.VIDEOS.slice(0,3).forEach(video=>{
+
+container.innerHTML+=`
+
+<div
+onclick="window.open('${video.url}','_blank')"
+class="bg-white rounded-2xl shadow-lg hover:-translate-y-3 hover:shadow-2xl duration-300 cursor-pointer overflow-hidden">
+
+<img
+src="${video.thumbnail}"
+class="w-full h-56 object-cover">
+
+<div class="p-5">
+
+<h3 class="text-2xl font-bold">
+
+${video.title}
+
+</h3>
+
+<p class="text-gray-600 mt-2">
+
+${video.description}
+
+</p>
+
+<button
+class="mt-5 bg-red-600 text-white px-5 py-2 rounded-full">
+
+${video.platform === "instagram" ? "📷 View Reel" : "▶ Watch Video"}
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+});
+
+}
+if (document.getElementById("homeVideos")) {
+    loadHomeVideos();
+}
+
+
+function loadAllVideos(){
+
+fetch("data/links.json")
+.then(res=>res.json())
+.then(data=>{
+
+    console.log("JSON Loaded");
+    console.log(data);
+
+    const container=document.getElementById("allVideos");
+
+    console.log(container);
+
+    container.innerHTML="";
+
+    console.log(data.VIDEOS.length);
+
+
+
+data.VIDEOS.forEach(video=>{
+
+container.innerHTML+=`
+
+<div
+class="bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl duration-300">
+
+<img
+src="${video.thumbnail}"
+class="w-full h-56 object-cover">
+
+<div class="p-5">
+
+<h2 class="text-2xl font-bold">
+${video.title}
+</h2>
+
+<p class="text-gray-600 mt-3">
+${video.description}
+</p>
+
+<a
+href="${video.url}"
+target="_blank"
+class="mt-5 inline-block bg-red-600 text-white px-5 py-3 rounded-xl">
+
+${video.platform === "instagram"
+? "📷 View Reel"
+: "▶ Watch on YouTube"}
+
+</a>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+});
+
+}
+if (document.getElementById("allVideos")) {
+    loadAllVideos();
+}
