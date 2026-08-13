@@ -1670,5 +1670,79 @@
       "name": "Introduction to environmental engineering and science by Gilbert M Masters(3rd edition)",
       "link": "https://drive.google.com/file/d/1LSy12ExoIpMw6_pJJ0zMyFrIkDlFrXuo/view?usp=sharing"
     }
-  ]
+  ],
+
+  "VIDEOS":[
+{
+"title":"NSRIT CAMPUS TOUR",
+"description":"A tour of the NSRIT campus showcasing its facilities and infrastructure.",
+"thumbnail":"images/gallery7.png",
+"platform": "youtube",
+"url":"https://youtu.be/b8RTMPq0Ll8?si=BvAm7JDwP3YwrK5r"
+},
+{
+"title":"Hackathon",
+"description":"Tri-Mobility Challenge – 24-Hour Hackathon",
+"thumbnail":"images/image7.png",
+"platform": "youtube",
+"url":"https://youtu.be/Ch__MdDEqMQ?si=xbcVl_MHcFBjJ3Ja"
+},
+{
+"title":"Sports Day",
+"description":"Annual Sports Meet",
+"thumbnail":"images/image5.png",
+"platform": "youtube",
+"url":"https://youtube.com/shorts/Qy8oVUovVfA?si=hY9Yw6L2_heS6oRZ"
+},
+{
+"title":"Annual Day",
+"description":"Annual Day Celebrations",
+"thumbnail":"images/gallery3.png",
+"platform": "youtube",
+"url":"https://youtu.be/YVu2ZBQNFxQ?si=IgdMayH8NmAJH1Mn"
+},
+{
+"title":"InnoYudh 2K25",
+"description":"InnoYudh 2K25 is a 24-hour national-level innovation challenge",
+"thumbnail":"images/image8.png",
+"platform": "youtube",
+"url":"https://youtu.be/j3VoADIMfkc?si=Q4loAKb15zOKluov"
+},
+{
+"title":"Binary Search",
+"description":"Searching Techniques| Data Structures",
+"thumbnail":"images/image9.png",
+"platform": "youtube",
+"url":"https://youtu.be/D2_p9ZNUiOA?si=t9_flrdCvMVGvRTp"
+},
+{
+"title":"Linear Search ",
+"description":"Searching Techniques | Data Structures",
+"thumbnail":"images/image10.png",
+"platform": "youtube",
+"url":"https://youtu.be/GZA4WwQ8jbU?si=N3hZuiRDzsnT25Qp"
+},
+{
+"title":"Powering the Future with EEE at NSRIT!",
+"description":"Hear directly from our student as they share their journey in the **Electrical & Electronics Engineering (EEE)** Department at NSRIT. ",
+"thumbnail":"images/image11.png",
+"platform": "instagram",
+"url":"https://www.instagram.com/reel/DbM8m9-hEJP/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+},
+{
+"title":"NSRIT - A Journey of Excellence",
+"description":"Confidence is built one step at a time. Here's to learning, leading, and making every moment count! 💙",
+"thumbnail":"images/image12.png",
+"platform": "instagram",
+"url":"https://www.instagram.com/reel/DbdcHewB05S/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+},
+{
+"title":"NSRIT - A Journey of Excellence",
+"description":"✨ Smiles, dreams, and campus vibes! 💙 Every step today is a memory for tomorrow. 🌸📚",
+"thumbnail":"images/image13.png",
+"platform": "instagram",
+"url":"https://www.instagram.com/reel/Dbcb1L7KxPW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+}
+
+]
 }
