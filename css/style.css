@@ -1,12 +1,27 @@
+html{
+    scroll-behavior:smooth;
+}
+
 .nav-btn {
   padding: 6px 12px;
-  border-radius: 5px;
+  border-radius: 8px;
+  background: transparent;
+  color: #111;
+  font-weight: 500;
   transition: 0.3s;
 }
 
 .nav-btn:hover {
-  background-color: #f95656;
+  background: #ef4444;
   color: white;
+}
+
+nav ul {
+  position: relative;
+}
+
+.nav-btn {
+  position: relative;
 }
 
 .section {
@@ -413,4 +428,88 @@ table th {
 .team-lead {
   border: 2px solid #dc2626;
   background: linear-gradient(to bottom,#fff,#fff5f5);
+}
+
+.card {
+  min-width: 250px;
+  margin: 0 10px;
+  transition: all 0.5s ease;
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* CENTER CARD */
+.card.active {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Smooth effect */
+#carousel {
+  display: flex;
+  align-items: center;
+}
+
+.card img {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+  transform: scale(1.15);
+}
+
+h2 {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.card {
+  min-width: 33.33%;
+  padding: 10px;
+  transition: all 0.5s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: all 0.5s ease;
+}
+
+/* Center focus effect */
+.card.active img {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Blur side cards */
+.card:not(.active) img {
+  opacity: 0.6;
+  transform: scale(0.9);
+}
+
+
+/* Dots */
+#dots div {
+  width: 10px;
+  height: 10px;
+  background: gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#dots .active-dot {
+  background: red;
 }
