@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>NSRIT Academic Portal</title>
+  <link rel="icon" type="image/x-icon" href="/images/nsrit.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Tailwind -->
@@ -51,6 +52,10 @@
       <p class="text-xs">
         Established in 2008
       </p>
+      <div class="text-white text-sm">
+  Visitors: <span id="visitorCount">0</span>
+</div>
+    </div>
 
   </div>
 
@@ -166,20 +171,18 @@ class="absolute bg-white border w-full mt-1 rounded shadow hidden z-50">
     <!-- RIGHT IMAGE -->
     <div class="relative">
 
-      <img src="https://pbs.twimg.com/media/E8-MrXXVcAgbFVL.jpg"
-          alt="NSRIT Campus"
-           class="w-full h-[400px] object-cover rounded-2xl shadow-lg">
+    <img src="images/image.png"
+         class="rounded-3xl shadow-lg w-full">
 
-      <!-- IMAGE CAPTION -->
-      <div
-        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-red-800 text-white px-6 py-3 rounded-lg text-center text-sm md:text-base shadow-lg">
+    <a href="gallery.html"
+       class="absolute top-5 right-5 bg-red-700 text-white px-6 py-3 rounded-full shadow-xl hover:bg-red-800 transition flex items-center gap-2">
 
-        NSRIT Students <br>
-        Visakhapatnam • 2026
+        📷 Explore Full Gallery
+        →
 
-      </div>
+    </a>
 
-    </div>
+</div>
 
   </div>
 
@@ -277,12 +280,16 @@ class="absolute bg-white border w-full mt-1 rounded shadow hidden z-50">
         </tr>
 
         <tr>
-          <td class="border p-2">AR23</td>
-      
-          <td class="border p-2">
-            <a href="https://drive.google.com/file/d/1PHxWl3IxIvEMIGOS8yT7l1K_5H_EwPb4/view?usp=sharing" class="link">View</a>
-          </td>
-        </tr>
+    <td class="border p-2">AR23</td>
+
+    <td class="border p-2 text-center">
+        <button
+            onclick="toggleSyllabus()"
+            class="text-blue-600 underline">
+            View
+        </button>
+    </td>
+</tr>
 
         <tr>
           <td class="border p-2">AR26</td>
@@ -292,7 +299,80 @@ class="absolute bg-white border w-full mt-1 rounded shadow hidden z-50">
         </tr>
 
       </table>
+
+      <!-- Department Wise Syllabus -->
+<div id="syllabusDepartments"
+     class="hidden mt-6">
+
+    <h3 class="text-xl font-bold mb-3">
+        AR23 Department Syllabus
+    </h3>
+
+    <table class="w-full border">
+
+        <tr class="bg-gray-200">
+            <th class="border p-2">Department</th>
+            <th class="border p-2">Syllabus</th>
+        </tr>
+
+        <tr>
+            <td class="border p-2">CSE</td>
+
+            <td class="border p-2 text-center">
+                <a href="YOUR_CSE_LINK"
+                   target="_blank"
+                   class="text-blue-600 underline">
+                    View
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="border p-2">ECE</td>
+
+            <td class="border p-2 text-center">
+                <a href="YOUR_ECE_LINK"
+                   target="_blank"
+                   class="text-blue-600 underline">
+                    View
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="border p-2">EEE</td>
+
+            <td class="border p-2 text-center">
+                NA
+            </td>
+        </tr>
+
+        <tr>
+            <td class="border p-2">MECH</td>
+
+            <td class="border p-2 text-center">
+                <a href="YOUR_MECH_LINK"
+                   target="_blank"
+                   class="text-blue-600 underline">
+                    View
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="border p-2">CIVIL</td>
+
+            <td class="border p-2 text-center">
+                NA
+            </td>
+        </tr>
+
+    </table>
+
+</div>
     </div>
+
+    
 
 
     <!-- CP Projects -->
@@ -329,9 +409,76 @@ class="absolute bg-white border w-full mt-1 rounded shadow hidden z-50">
 
   </div>
 
-</section>
+  <!-- ================= GALLERY SECTION ================= -->
+<!-- ================= PREMIUM GALLERY ================= -->
+<section class="py-16 bg-gradient-to-r from-red-100 to-red-400">
 
+  <h2 class="text-3xl font-bold text-center mb-10">
+    Our Gallery
+  </h2>
+
+  <div class="relative max-w-5xl mx-auto">
+
+    <!-- Carousel -->
+    <div id="carouselWrapper" class="overflow-hidden">
+      <div id="carousel" class="flex transition-transform duration-700">
+
+        <!-- Images -->
+        <div class="card"><img src="images/gallery1.png"></div>
+        <div class="card"><img src="images/gallery2.png"></div>
+        <div class="card"><img src="images/gallery3.png"></div>
+        <div class="card"><img src="images/gallery4.png"></div>
+        <div class="card"><img src="images/gallery5.png"></div>
+        <div class="card"><img src="images/gallery6.png"></div>
+        <div class="card"><img src="images/gallery7.png"></div>
+        <div class="card"><img src="images/gallery8.png"></div>
+        <div class="card"><img src="images/gallery9.png"></div>
+        <div class="card"><img src="images/gallery10.png"></div>
+
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <button onclick="prevSlide()" class="nav-btn left-0">◀</button>
+    <button onclick="nextSlide()" class="nav-btn right-0">▶</button>
+
+    <!-- Dots -->
+    <div id="dots" class="flex justify-center mt-6 gap-2"></div>
+
+  </div>
+</section>
+    <section class="py-16 bg-gradient-to-r from-red-50 via-white to-red-100">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="flex justify-between items-center mb-10">
+
+<h2 class="text-4xl font-bold text-red-700">
+
+📺 Latest Videos
+
+</h2>
+
+<a href="videos.html"
+class="bg-red-700 text-white px-6 py-3 rounded-full hover:bg-red-800 transition">
+
+View All →
+
+</a>
+
+</div>
+
+<div id="homeVideos"
+class="grid md:grid-cols-3 gap-8">
+
+</div>
+
+</div>
+
+</section>
+</section>
   
+
 
 <!-- ========== OTHER SECTIONS ========== -->
 
@@ -736,23 +883,35 @@ By providing well-structured, searchable, and user-friendly content, this websit
 </section>
 
 <section id="textbooksSection" class="section hidden">
-<h1 class="text-3xl font-bold mb-6 text-center">Textbooks</h1>
 
-<div class="overflow-x-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center">
+        Textbooks
+    </h1>
 
-<table class="w-full border border-gray-300 rounded-lg">
+    <div class="overflow-x-auto">
 
-<thead class="bg-red-500 text-white">
-<tr>
-<th class="p-3 border">Subject</th>
-<th class="p-3 border">Textbook</th>
-</tr>
-</thead>
+        <table class="w-full border border-gray-300 rounded-lg">
 
-<tbody id="textbookTable" ></tbody>
-</table>
+            <thead class="bg-red-500 text-white">
 
-</div>
+                <tr>
+                    <th class="p-3 border">Subject</th>
+                    <th class="p-3 border">Textbook</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="textbookTable"></tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Pagination -->
+    <div
+        id="textbookPagination"
+        class="flex justify-center gap-2 mt-6">
+    </div>
 
 </section>
 <section id="contact" class="section contact-bg">
@@ -913,6 +1072,8 @@ By providing well-structured, searchable, and user-friendly content, this websit
 </section>
 
 </main>
+
+
 
 
 <!-- ================= FOOTER ================= -->
