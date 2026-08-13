@@ -1,0 +1,37 @@
+[
+  {
+    "title":"Freshers Day",
+    "description":"Freshers Day Celebration 2026",
+    "image":"images/image4.png"
+  },
+
+  {
+    "title":"Hackathon",
+    "description":"Tri-Mobility Challenge Hackathon Concludes Successfully at NSRIT",
+    "image":"images/image3.png"
+  },
+
+  {
+    "title":"Sports Day",
+    "description":"NSRIT celebrated National Sports Day with great enthusiasm, bringing students together to showcase their energy, strength, and team spirit.",
+    "image":"images/image5.png"
+  },
+
+  {
+    "title":"Engineers Day",
+    "description":"Celebration",
+    "image":"images/gallery10.png"
+  },
+
+  {
+    "title":"Annual Day",
+    "description":"🎉 Annual Day Celebrations @ NSRIT 🎉\nAn evening where talent met applause and memories turned magical! 🌟",
+    "image":"images/gallery9.png"
+  },
+
+    {
+    "title":"Graduation Ceremony",
+    "description":"🎓 A proud moment at NSRIT! Our Graduation Ceremony was filled with joy, achievements, and unforgettable memories.",
+    "image":"images/image6.png"
+  }
+]
